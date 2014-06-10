@@ -1,6 +1,6 @@
 # http-request-retrofit-client
 
-A Retrofit client powered by Kevin Sawicki's http-request.
+A [Retrofit](http://square.github.io/retrofit/) client powered by Kevin Sawicki's [http-request](https://github.com/kevinsawicki/http-request).
 
 ## Why?
 You might wonder why you would want to use anything other than the stock Retrofit clients or the fantastic OkHttp.
