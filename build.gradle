@@ -9,6 +9,9 @@ dependencies {
     compile 'com.github.kevinsawicki:http-request:5.6'
     compile 'com.squareup.retrofit:retrofit:1.6.0'
     testCompile 'junit:junit:4.11'
+    testCompile 'com.google.guava:guava:17.0'
+    testCompile 'com.fasterxml.jackson.core:jackson-core:2.4.0'
+    testCompile 'com.fasterxml.jackson.core:jackson-databind:2.4.0'
 }
 
 task wrapper(type: Wrapper) {

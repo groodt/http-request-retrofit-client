@@ -85,7 +85,8 @@ public class HttpRequestClient implements Client {
         // Execute request and get response
         final int responseCode = httpRequest.code();
         final String responseMessage = httpRequest.message();
-        final byte[] bodyBytes = httpRequest.body().getBytes(CHARSET_UTF8);
+        final String responseCharset = getValidCharSet(httpRequest);
+        final byte[] bodyBytes = httpRequest.body().getBytes(responseCharset);
 
         // Prepare response headers
         Map<String, List<String>> httpRequestResponseHeaders = httpRequest.headers();
@@ -111,6 +112,11 @@ public class HttpRequestClient implements Client {
 
         // Response object for Retrofit
         return new Response(request.getUrl(), responseCode, responseMessage, retrofitResponseHeaders, typedInput);
+    }
+
+    private static String getValidCharSet(final HttpRequest httpRequest) {
+        String charset = httpRequest.charset();
+        return charset != null && charset.length() > 0 ? charset : CHARSET_UTF8;
     }
 
     private static List<Header> transformHttpResponseHeadersToRetrofitHeaders(final Map<String, List<String>> responseHeaders) {
